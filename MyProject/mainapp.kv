@@ -1,0 +1,85 @@
+<MainWindow>:
+
+    BoxLayout:
+
+        orientation: 'vertical'
+        spacing: 15, 10
+        padding: 10
+
+        background_color: 1, 1, 1, 1
+        canvas.before:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+
+        StackLayout:
+
+            padding: 3
+            size_hint_y: 0.08
+
+            Label:
+
+                text: "№ недели: "
+                color: 0, 0, 0, 1
+                size_hint_x: 0.2
+                text_size: self.width, None
+                height: self.texture_size[1]
+
+            TextInput:
+
+                size_hint_x: 0.8
+                id: week_number_text
+
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
+            Label:
+
+                background_color: 0, 247, 255, 0.7
+
+                color: 0, 0, 0, 1
+
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                size_hint: 1, None
+                text_size: self.width, None
+
+                height: self.texture_size[1]
+
+                text: "Hello my Lovely)))"
+                id: text_lable
+
+# Бокс для кнопок
+        BoxLayout:
+
+            orientation: 'vertical'
+            padding: 5
+            size_hint: 1, 0.26
+
+            Button:
+
+                text: "Получить расписание на неделю"
+
+                id: button_command
+                size_hint: 1, 0.5
+                on_press: root.process_command()
+
+            Button:
+
+                text: "Получить расписание на сегодня"
+
+                id: button_date
+                size_hint: 1, 0.5
+                on_press: root.process_command_date()
+
